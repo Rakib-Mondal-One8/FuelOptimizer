@@ -19,15 +19,19 @@ class Command(BaseCommand):
             stations = []
 
             for row in reader:
+                lat = row["latitude"].strip()
+                lon = row["longitude"].strip()
                 stations.append(
                     FuelStation(
-                        truckstop_id=row["OPIS Truckstop ID"],
-                        truckstop_name=row["Truckstop Name"],
-                        address=row["Address"],
-                        city=row["City"],
-                        state=row["State"],
-                        rack_id=row["Rack ID"],
-                        retail_price=row["Retail Price"],
+                        truckstop_id=row["truckstop_id"],
+                        truckstop_name=row["truckstop_name"],
+                        address=row["address"],
+                        city=row["city"],
+                        state=row["state"],
+                        rack_id=row["rack_id"],
+                        retail_price=row["retail_price"],
+                        latitude=float(lat) if lat else None,
+                        longitude=float(lon) if lon else None,
                     )
                 )
 
