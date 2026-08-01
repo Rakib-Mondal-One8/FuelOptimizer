@@ -83,7 +83,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "fuel_optimizer",
         "USER": "rakib",
-        "PASSWORD": "qwe0260",
+        "PASSWORD": "your_password",
         "HOST": "localhost",
         "PORT": "5432",
     }
