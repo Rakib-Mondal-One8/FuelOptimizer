@@ -70,7 +70,7 @@ pip install -r requirements.txt
 Create a database, for example:
 
 ```sql
-CREATE DATABASE fueloptimizer;
+CREATE DATABASE fuel_optimizer;
 ```
 
 ## 6. Configure environment variables
@@ -78,7 +78,7 @@ CREATE DATABASE fueloptimizer;
 Create a `.env` file:
 
 ```env
-DB_NAME=fueloptimizer
+DB_NAME=fuel_optimizer
 DB_USER=postgres
 DB_PASSWORD=your_password
 DB_HOST=localhost
