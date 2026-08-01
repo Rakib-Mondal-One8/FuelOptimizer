@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Route & Fuel Stop Map</title>
+
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""
+/>
+
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+
+  #map {
+    height: 100%;
+    width: 100%;
+  }
+
+  #info-panel {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 1000;
+    background: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    font-size: 14px;
+    min-width: 160px;
+  }
+
+  #info-panel h3 {
+    margin: 0 0 6px 0;
+    font-size: 14px;
+  }
+
+  #status {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    font-size: 13px;
+    color: #333;
+  }
+
+  .halt-popup b {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  #search-panel {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 1000;
+    background: #fff;
+    padding: 14px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    font-size: 14px;
+    width: 240px;
+  }
+
+  #search-panel h3 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+  }
+
+  #search-panel label {
+    display: block;
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 3px;
+  }
+
+  #search-panel input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+
+  #search-panel button {
+    width: 100%;
+    padding: 8px;
+    background: #1d4ed8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  #search-panel button:hover {
+    background: #1e40af;
+  }
+
+  #search-panel button:disabled {
+    background: #93b0ee;
+    cursor: not-allowed;
+  }
+
+  #search-error {
+    color: #dc2626;
+    font-size: 12px;
+    margin-top: 8px;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<div id="search-panel">
+  <h3>Plan Route</h3>
+  <form id="route-form">
+    <label for="source">Source</label>
+    <input type="text" id="source" name="source" placeholder="e.g. Chicago, IL" required>
+
+    <label for="destination">Destination</label>
+    <input type="text" id="destination" name="destination" placeholder="e.g. Denver, CO" required>
+
+    <button type="submit" id="submit-btn">Find Route</button>
+  </form>
+  <div id="search-error"></div>
+</div>
+
+<div id="info-panel" style="display:none;">
+  <h3>Trip Summary</h3>
+  <div id="total-cost">Total cost: —</div>
+  <div id="halt-count">Fuel stops: —</div>
+</div>
+
+<div id="status" style="display:none;">Loading route…</div>
+
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin="">
+</script>
+
+<script src="/static/js/app.js"></script>
+
+</body>
+</html>
