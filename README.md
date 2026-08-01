@@ -24,4 +24,4 @@ Sort stations by their position along the route.
 Use Dynamic Programming to determine the minimum-cost sequence of fuel stops.
 Display the optimized route and fuel stations on an interactive map.
 
-![Workflow](fuel_optimizer/images/workflow.png)
+![Workflow](images/workflow.png)
